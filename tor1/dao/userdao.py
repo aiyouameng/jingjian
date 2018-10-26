@@ -25,3 +25,30 @@ def getUserByUserPass(username, password):
     except Exception as e:
         utils.logger.error(e)
         return None
+
+
+def updatePassword(username, password):
+    try:
+        sql = "update user set password='%s' WHERE username='%s';" % (password, username)
+        dbmysql.query(sql)
+    except Exception as e:
+        utils.logger.error(e)
+
+
+def showUsers():
+    rs = None
+    try:
+        sql = "select * from user ORDER BY insertTime desc;"
+        rs = dbmysql.fetchall(sql)
+    except Exception as e:
+        utils.logger.error(e)
+    return rs
+
+
+def getUserById(id):
+    try:
+        sql = "select * from user where id=%s;" % id
+        return dbmysql.first(sql)
+    except Exception as e:
+        utils.logger.error(e)
+        return None
