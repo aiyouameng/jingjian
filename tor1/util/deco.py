@@ -12,7 +12,6 @@ def auth_login_redirect(func):
             if data != None:
                 func(self, *args, **kwargs, data=json.loads(data))
                 utils.setMem(key=username, values=data)
-                return func
             else:
                 isredict = True
         else:

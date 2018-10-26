@@ -1,6 +1,6 @@
 import memcache  # 链接
-
+import config
 try:
-    mc = memcache.Client(['192.168.50.205:11211'])
+    mc = memcache.Client(config.Men.url)
 except Exception as e:
     print(e)

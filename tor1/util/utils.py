@@ -12,6 +12,12 @@ def setMem(key, values, time=3600):
     except Exception as e:
         logger.error(e)
 
+def setMemReplace(key, values):
+    try:
+        dbmemcache.mc.replace(key, values)
+    except Exception as e:
+        logger.error(e)
+
 
 def getMem(key):
     try:
